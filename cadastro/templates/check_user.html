@@ -21,11 +21,14 @@
             {% for pessoa in pessoas%}
                 <tr>
                     <th> {{pessoa.firstName}}</th>
-                    <th> Last Name </th>
-                    <th> CPF </th>
-                    <th> Age </th>
-                    <th> Email </th>
+                    <th> {{pessoa.lastName}} </th>
+                    <th> {{pessoa.cpf}} </th>
+                    <th> {{pessoa.age}} </th>
+                    <th> {{pessoa.email}} </th>
                 </tr>
             {% endfor %}
+            <button> <a href=" {% url 'register_user' %}">Criar novo contato </a></button>
+
+            <button> <a href=" {% url 'menu' %}">Voltar ao menu </a></button>
     </table>
 {% endblock  %}
