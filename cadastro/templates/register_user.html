@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+{% block 'head' %}
+    <link rel="stylesheet" href="#">
+{% endblock 'head' %}
+{% block 'titulo' %}Creat new User{% endblock %}
+
+{% block 'body' %}
+    
+    <h1> Fill the fields bellow to register a new user </h1>
+
+    <form action="{% url 'register_user' %}" method="POST">
+        {% csrf_token %}
+
+        <label for="First Name"> First Name</label>
+        <input type="text" id="First Name" name="firstName">
+        <p> </p>
+
+        <label for="Last Name"> Last Name</label>
+        <input type="text" id="Last Name" name="lastName">
+        <p> </p>
+
+        <label for="CPF"> CPF</label>
+        <input type="text" id="CPF" name="cpf">
+        <p> </p>
+
+        <label for="Age"> Age</label>
+        <input type="number" id="Age" name="age">
+        <p> </p>
+
+        <label for="Email"> Email</label>
+        <input type="text" id="Email" name="email">
+        <p> </p>
+        <input type="submit" value="Criar novo Usuario" class="btn btn-lg btn-orange">
+        
+    </form>
+
+{% endblock 'body' %}
