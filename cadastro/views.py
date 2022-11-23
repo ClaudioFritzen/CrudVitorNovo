@@ -14,15 +14,14 @@ def check_user(request):
 def register_user(request):
     if request.method == "GET":
         pessoas = Cadastro.objects.all()
-        return render(request, "register_user.html", {'sorte':pessoas})
+        return render(request, "register_user.html", {'pessoas':pessoas})
     elif request.method == "POST":
         firstName = request.POST.get('firstName')
         lastName = request.POST.get('firstName')
         cpf = request.POST.get('cpf')
         email = request.POST.get('email')
         age = request.POST.get('age')
-
-
+    
         pessoas = Cadastro(
             firstName=firstName,
             lastName=lastName,
@@ -32,3 +31,7 @@ def register_user(request):
         )
         pessoas.save()
         return redirect('/')
+
+def update_user(request):
+    pessoas = Cadastro.objects.all()
+    return render(request, "update_user.html", {'pessoas':pessoas})

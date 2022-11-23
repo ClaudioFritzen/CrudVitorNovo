@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+
+{% block 'head' %}
+    <link rel="stylesheet" href="#">
+{% endblock 'head' %}
+{% block 'titulo' %}Atualizar usuario{% endblock %}
+
+{% block 'body' %}
+
+    <h1> Select an ID from the spreadsheet bellow to update a specific record </h1>
+    <table border="1">
+        <button> <a href=" {% url 'register_user' %}">Criar novo contato </a></button>
+
+        <button> <a href=" {% url 'menu' %}">Voltar ao menu </a></button>
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> First Name </th>
+                <th> Last Name </th>
+                <th> CPF </th>
+                <th> Age </th>
+                <th> Email </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pessoa in pessoas %}
+                <tr>
+                    <td><a href="update_record/{{ pessoa.id }}">{{ pessoa.id }}</a></td>
+                    <td> {{ pessoa.firstName }} </td>
+                    <td> {{ pessoa.lastName }} </td>
+                    <td> {{ pessoa.cpf }} </td>
+                    <td> {{ pessoa.age }} </td>
+                    <td> {{ pessoa.email }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock 'body' %}
