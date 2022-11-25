@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 
 from .models import Cadastro
 
@@ -35,3 +36,12 @@ def register_user(request):
 def update_user(request):
     pessoas = Cadastro.objects.all()
     return render(request, "update_user.html", {'pessoas': pessoas})
+
+def update_record(request):
+    return HttpResponse("Teste de record")
+
+def delete(request, id):
+    pessoa = Cadastro.objects.get(id=id)
+    pessoa.delete()
+    print(f'Voce excluiu {pessoa}')
+    return HttpResponseRedirect(reverse('update_user'))
