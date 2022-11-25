@@ -34,4 +34,4 @@ def register_user(request):
 
 def update_user(request):
     pessoas = Cadastro.objects.all()
-    return render(request, "update_user.html", {'pessoas':pessoas})
+    return render(request, "update_user.html", {'pessoas': pessoas})
