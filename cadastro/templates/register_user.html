@@ -11,7 +11,7 @@
     
     <h1> Fill the fields bellow to register a new user </h1>
 
-    <form action="{% url 'register_user' %}" method="POST">
+    <form action="{% url 'check_user' %}" method="POST">
         {% csrf_token %}
 
         <label for="First Name"> First Name</label>
