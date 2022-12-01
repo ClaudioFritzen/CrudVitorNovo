@@ -1,12 +1,27 @@
-<h1>Update member</h1>
 
-<form action="updaterecord/{{ pessoa.id }}" method="post">
-{% csrf_token %}
-First Name:<br>
-<input name="first" value="{{ pessoa.firstname }}">
-<br><br>
-Last Name:<br>
-<input name="last" value="{{ pessoa.lastname }}">
-<br><br>
-<input type="submit" value="Submit">
+<body>
+    <h1>Update member</h1>
+
+    <h1>{{pessoa.id}}</h1>
+    <h1> Update member </h1>
+
+<form action="updaterecord/{{ mymember.id }}" method="post">
+    {% csrf_token %}
+    First Name:<br>
+    <input name="first" value="{{ mymember.firstName }}">
+    <br><br>
+    Last Name:<br>
+    <input name="last" value="{{ mymember.lastName }}">
+    <br><br>
+    cpf:<br>
+    <input name="cpf" value="{{ mymember.cpf }}">
+    <br><br>
+    Age:<br>
+    <input name="age" value="{{ mymember.age }}">
+    <br><br>
+    Email:<br>
+    <input name="email" value="{{ mymember.email }}">
+    <br><br>
+    <input type="submit" value="Submit">
+
 </form>

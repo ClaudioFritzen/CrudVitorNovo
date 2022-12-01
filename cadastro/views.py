@@ -40,19 +40,34 @@ def update_user(request):
 
 # update
 def update(request, id):
-    pessoas = Cadastro.objects.get(id=id)
-    print(f' Pessoa escolhida pelo id para fazer update{pessoas}')
-    return render(request, "update.html", {'pessoas': {pessoas}} )
-def update_record(request, id):
-    pessoas = Cadastro.objects.get(id=id)
-    template = loader.get_templates('update_record.html')
+    mymember = Cadastro.objects.get(id=id)
+    templete = loader.get_template('update.html')
     context = {
-        'pessoas': pessoas,
+        'mymember': mymember,
     }
-    return HttpResponse(template(context,request))
+    return HttpResponse(templete.render(context, request))
 
 def delete(request, id):
     pessoa = Cadastro.objects.get(id=id)
     pessoa.delete()
     print(f'Voce excluiu {pessoa}')
     return HttpResponseRedirect(reverse('update_user'))
+
+def updaterecord(request, id):
+    first = request.POST['first']
+    last = request.POST['last']
+    cpf = request.POST['cpf']
+    age = request.POST['age']
+    email = request.POST['email']
+
+    member = Cadastro.objects.get(id=id)
+    member.firstName = first
+    member.lastName = last
+    member.cpf = cpf
+    member.age = age
+    member.email = email
+    member.save()
+    print(member)
+    return HttpResponseRedirect(reverse('update_user'))
+
+   
